@@ -33,11 +33,11 @@ jobs:
         id: plan
         run: terraform -chdir=./test plan 
         env:
-          TF_VAR_snowpassword = ${{SF_PASSWORD}}
+          TF_VAR_snowpassword: ${{ secrets.SF_PASSWORD }}
 
       - name: Terrafrm apply
         id: apply
         run: terraform -chdir=./test apply -auto-approve
         env:
-          TF_VAR_snowpassword = ${{SF_PASSWORD}}
+          TF_VAR_snowpassword: ${{ secrets.SF_PASSWORD }}
 
