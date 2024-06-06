@@ -1,0 +1,43 @@
+name: "test environment -push code to test environment using terraform"
+on:
+  push:
+    branches:
+      - "TEST"
+
+jobs:
+  deploy-terrafrm-on-test:
+    name: "Plan and Deploy terraform on test"
+    runs-on: ubuntu-latest
+    permissions: 
+      pull-requests: write
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform init
+        id: init
+        run: terraform -chdir=./test init
+
+      - name: Terraform format
+        id: format
+        run: terraform -chdir=./test fmt -recursive -check
+
+      - name: Terrafrm validate
+        id: validate
+        run: terraform -chdir=./test validate -no-color
+
+      - name: Terrafrm plan
+        id: plan
+        run: terraform -chdir=./test plan 
+        env:
+          TF_VAR_snowpassword = ${{SF_PASSWORD}}
+
+      - name: Terrafrm apply
+        id: apply
+        run: terraform -chdir=./test apply -auto-approve
+        env:
+          TF_VAR_snowpassword = ${{SF_PASSWORD}}
+
