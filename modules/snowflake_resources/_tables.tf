@@ -24,4 +24,9 @@ resource "snowflake_table" "demo_table" {
       name = "test_name"
       type = "VARCHAR(100)"
     }
+
+    column {
+      name = "test_name2"
+      type = "VARCHAR(100)"
+    }
 }
