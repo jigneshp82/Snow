@@ -13,7 +13,6 @@ variable "snowpassword" {
     type = string
     description = "snowflake password"
     sensitive = true
-    default = "Learn@2024"
   }
 
   variable "schema" {
