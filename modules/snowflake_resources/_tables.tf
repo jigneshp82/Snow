@@ -27,6 +27,6 @@ resource "snowflake_table" "demo_table" {
 
     column {
       name = "test_name2"
-      type = "VARCHAR(100)"
+      type = "VARCHAR(101)"
     }
 }
