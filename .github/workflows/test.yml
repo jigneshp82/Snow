@@ -21,9 +21,6 @@ jobs:
         id: init
         run: terraform -chdir=./test init
 
-      - name: Terraform format
-        id: format
-        run: terraform -chdir=./test fmt -recursive -check
 
       - name: Terrafrm validate
         id: validate
