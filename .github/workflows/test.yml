@@ -2,7 +2,7 @@ name: "test environment -push code to test environment using terraform"
 on:
   push:
     branches:
-      - "TEST"
+      - TEST
 
 jobs:
   deploy-terrafrm-on-test:
