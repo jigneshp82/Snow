@@ -22,7 +22,7 @@ resource "snowflake_table" "demo_table" {
 
     column {
       name = "test_name"
-      type = "VARCHAR(100)"
+      type = "VARCHAR(10)"
     }
 
     column {
